@@ -33,6 +33,35 @@ export default function SurveyTake() {
     }));
   };
 
+// const handleSubmit = async () => {
+//   setSubmitting(true);
+
+//   const payload = {
+//     surveyId,
+//     responses: survey.questions.map((q, index) => ({
+//       questionId: q._id,
+//       answer: answers[index] || "",
+//     })),
+//   };
+
+//   try {
+//     await axios.post(`${API_URL}/api/submission/submit`, payload);
+
+//     let url = survey.redirectUrl;
+
+//     // Agar http:// ya https:// missing ho to add kar do
+//     if (!/^https?:\/\//i.test(url)) {
+//       url = "https://" + url;
+//     }
+
+//     window.open(url, "_self");
+//      setSubmitting(false);
+//   } catch (error) {
+//     console.error(error);
+//     setSubmitting(false);
+//   }
+// };
+
 const handleSubmit = async () => {
   setSubmitting(true);
 
@@ -47,20 +76,42 @@ const handleSubmit = async () => {
   try {
     await axios.post(`${API_URL}/api/submission/submit`, payload);
 
+    // 🔹 1️⃣ Survey URL se pid & uid uthao
+    const surveyParams = new URLSearchParams(window.location.search);
+    const pid = surveyParams.get("pid");
+    const uid = surveyParams.get("uid");
+
+    // 🔹 2️⃣ Redirect URL uthao
     let url = survey.redirectUrl;
 
-    // Agar http:// ya https:// missing ho to add kar do
+    // 🔹 3️⃣ http / https missing ho to add karo
     if (!/^https?:\/\//i.test(url)) {
       url = "https://" + url;
     }
 
-    window.open(url, "_self");
-     setSubmitting(false);
+    // 🔹 4️⃣ Redirect URL object
+    const redirectUrl = new URL(url);
+    const redirectParams = redirectUrl.searchParams;
+
+    // 🔹 5️⃣ ONLY replace if param exists in redirect URL
+    if (pid && redirectParams.has("pid")) {
+      redirectParams.set("pid", pid);
+    }
+
+    if (uid && redirectParams.has("uid")) {
+      redirectParams.set("uid", uid);
+    }
+
+    // 🔹 6️⃣ Redirect
+    window.open(redirectUrl.toString(), "_self");
+
+    setSubmitting(false);
   } catch (error) {
     console.error(error);
     setSubmitting(false);
   }
 };
+
 
   if (loading) {
     return (

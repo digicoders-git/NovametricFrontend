@@ -21,8 +21,8 @@ const SurveyNotLive = () => {
         <p className="description">
           The survey you are trying to reach is not live yet, please try again
           after sometime. Please feel free to try after sometime or contact us{" "}
-          <a href="mailto:support@miratsinsights.com">
-            support@miratsinsights.com
+          <a href="mailto:sp@novametricresearch.com">
+            sp@novametricresearch.com
           </a>
         </p>
 
