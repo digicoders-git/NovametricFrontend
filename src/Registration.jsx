@@ -317,7 +317,6 @@ const Registration = () => {
         emailVerified: true,
         // location: `${formData.city}, ${formData.state}, ${formData.country} - ${formData.pincode}`,
       };
-console.log(JSON.stringify(payload));
 
       const response = await fetch(`${API_URL}/api/registration/add`, {
         method: 'POST',
@@ -379,7 +378,7 @@ console.log(JSON.stringify(payload));
       content: (
         <>
           <div className="form-group">
-            <label>Full Name *</label>
+            <label>Full Name </label>
             <input
               type="text"
               value={formData.fullName}
@@ -392,7 +391,7 @@ console.log(JSON.stringify(payload));
           </div>
 
           <div className="form-group">
-            <label>Age *</label>
+            <label>Age </label>
             <div className="radio-group">
               {ageOptions.map(opt => (
                 <RadioOption
@@ -409,7 +408,7 @@ console.log(JSON.stringify(payload));
           </div>
 
           <div className="form-group">
-            <label>Gender *</label>
+            <label>Gender </label>
             <div className="radio-group">
               {genderOptions.map(opt => (
                 <RadioOption
@@ -427,7 +426,7 @@ console.log(JSON.stringify(payload));
 
           <div className="form-row">
             <div className="form-group">
-              <label>Country *</label>
+              <label>Country </label>
               <select
                 value={formData.country}
                 onChange={(e) => handleChange('country', e.target.value)}
@@ -443,7 +442,7 @@ console.log(JSON.stringify(payload));
             </div>
 
             <div className="form-group">
-              <label>State *</label>
+              <label>State </label>
               <input
                 type="text"
                 value={formData.state}
@@ -458,7 +457,7 @@ console.log(JSON.stringify(payload));
 
           <div className="form-row">
             <div className="form-group">
-              <label>City *</label>
+              <label>City </label>
               <input
                 type="text"
                 value={formData.city}
@@ -471,7 +470,7 @@ console.log(JSON.stringify(payload));
             </div>
 
             <div className="form-group">
-              <label>Pincode *</label>
+              <label>Pincode </label>
               <input
                 type="text"
                 value={formData.pincode}
@@ -485,7 +484,7 @@ console.log(JSON.stringify(payload));
           </div>
 
           <div className="form-group">
-            <label>Highest Level of Education *</label>
+            <label>Highest Level of Education </label>
             <select
               value={formData.education}
               onChange={(e) => handleChange('education', e.target.value)}
@@ -510,7 +509,7 @@ console.log(JSON.stringify(payload));
       content: (
         <>
           <div className="form-group">
-            <label>Primary Email Address *</label>
+            <label>Primary Email Address </label>
             <div className="email-verification">
               <input
                 type="email"
@@ -570,7 +569,7 @@ console.log(JSON.stringify(payload));
       content: (
         <>
           <div className="form-group">
-            <label>How many people live in your household (including you)? *</label>
+            <label>How many people live in your household (including you)? </label>
             <div className="radio-group">
               {householdOptions.map(opt => (
                 <RadioOption
@@ -587,7 +586,7 @@ console.log(JSON.stringify(payload));
           </div>
 
           <div className="form-group">
-            <label>Marital Status *</label>
+            <label>Marital Status </label>
             <div className="radio-group">
               {maritalOptions.map(opt => (
                 <RadioOption
@@ -604,7 +603,7 @@ console.log(JSON.stringify(payload));
           </div>
 
           <div className="form-group">
-            <label>Annual Household Income *</label>
+            <label>Annual Household Income </label>
             <select
               value={formData.income}
               onChange={(e) => handleChange('income', e.target.value)}
@@ -622,7 +621,7 @@ console.log(JSON.stringify(payload));
           </div>
 
           <div className="form-group">
-            <label>Do you own or rent your home? *</label>
+            <label>Do you own or rent your home? </label>
             <div className="radio-group">
               {homeOptions.map(opt => (
                 <RadioOption
@@ -646,7 +645,7 @@ console.log(JSON.stringify(payload));
       content: (
         <>
           <div className="form-group">
-            <label>Current Employment Status *</label>
+            <label>Current Employment Status </label>
             <select
               value={formData.employmentStatus}
               onChange={(e) => handleChange('employmentStatus', e.target.value)}
@@ -676,7 +675,7 @@ console.log(JSON.stringify(payload));
           </div>
 
           <div className="form-group">
-            <label>Which industry do you work in? *</label>
+            <label>Which industry do you work in? </label>
             <select
               value={formData.industry}
               onChange={(e) => handleChange('industry', e.target.value)}
@@ -692,7 +691,7 @@ console.log(JSON.stringify(payload));
           </div>
 
           <div className="form-group">
-            <label>How many years of work experience do you have? *</label>
+            <label>How many years of work experience do you have? </label>
             <div className="radio-group">
               {experienceOptions.map(opt => (
                 <RadioOption
@@ -709,7 +708,7 @@ console.log(JSON.stringify(payload));
           </div>
 
           <div className="form-group">
-            <label>Designation Level *</label>
+            <label>Designation Level </label>
             <select
               value={formData.designation}
               onChange={(e) => handleChange('designation', e.target.value)}
@@ -726,7 +725,7 @@ console.log(JSON.stringify(payload));
           </div>
 
           <div className="form-group">
-            <label>How many employees work in your organization? *</label>
+            <label>How many employees work in your organization? </label>
             <select
               value={formData.orgSize}
               onChange={(e) => handleChange('orgSize', e.target.value)}
@@ -753,7 +752,7 @@ console.log(JSON.stringify(payload));
       content: (
         <>
           <div className="form-group">
-            <label>Do you make purchase decisions for your household? *</label>
+            <label>Do you make purchase decisions for your household? </label>
             <div className="radio-group">
               {purchaseOptions.map(opt => (
                 <RadioOption
@@ -770,7 +769,7 @@ console.log(JSON.stringify(payload));
           </div>
 
           <div className="form-group">
-            <label>Do you own a vehicle? *</label>
+            <label>Do you own a vehicle? </label>
             <div className="radio-group">
               {vehicleOptions.map(opt => (
                 <RadioOption
@@ -816,7 +815,7 @@ console.log(JSON.stringify(payload));
           </div>
 
           <div className="form-group">
-            <label>Do you consent to your data being used for research purposes only? *</label>
+            <label>Do you consent to your data being used for research purposes only? </label>
             <div className="radio-group">
               {yesNoOptions.map(opt => (
                 <RadioOption
@@ -833,7 +832,7 @@ console.log(JSON.stringify(payload));
           </div>
 
           <div className="form-group">
-            <label>Do you agree not to disclose any study-related information? *</label>
+            <label>Do you agree not to disclose any study-related information? </label>
             <div className="radio-group">
               {yesNoOptions.map(opt => (
                 <RadioOption
@@ -850,7 +849,7 @@ console.log(JSON.stringify(payload));
           </div>
 
           <div className="form-group">
-            <label>Are you 18 years or older? *</label>
+            <label>Are you 18 years or older? </label>
             <div className="radio-group">
               {yesNoOptions.map(opt => (
                 <RadioOption
@@ -867,7 +866,7 @@ console.log(JSON.stringify(payload));
           </div>
 
           <div className="form-group">
-            <label>Do you agree to receive communication regarding research opportunities? *</label>
+            <label>Do you agree to receive communication regarding research opportunities? </label>
             <div className="radio-group">
               {yesNoOptions.map(opt => (
                 <RadioOption
@@ -930,10 +929,8 @@ console.log(JSON.stringify(payload));
           
           {submitResponse && (
             <div className="response-info">
-              {/* <p><strong>Registration ID:</strong> {submitResponse.data?._id || submitResponse.data?.id}</p> */}
               <p><strong>Name:</strong> {submitResponse.data?.fullName}</p>
               <p><strong>Email:</strong> {submitResponse.data?.email}</p>
-              {/* <p><strong>Location:</strong> {submitResponse.data?.city}, {submitResponse.data?.state}, {submitResponse.data?.country} - {submitResponse.data?.pincode}</p> */}
               <p><strong>Submitted at:</strong> {new Date(submitResponse.data?.createdAt).toLocaleString()}</p>
               <p className="verification-success">
                 ✓ Email verified successfully
@@ -1065,6 +1062,9 @@ console.log(JSON.stringify(payload));
           )}
         </div>
       </div>
+        <footer className="registration-header">
+        <p className='footer-text'>&copy; 2026 Novametric Research. All rights reserved.</p>
+      </footer>
     </div>
   );
 };

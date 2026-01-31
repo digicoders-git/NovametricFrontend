@@ -47,20 +47,42 @@ export default function SurveyTake() {
 //   try {
 //     await axios.post(`${API_URL}/api/submission/submit`, payload);
 
+//     // 🔹 1️⃣ Survey URL se pid & uid uthao
+//     const surveyParams = new URLSearchParams(window.location.search);
+//     const pid = surveyParams.get("pid");
+//     const uid = surveyParams.get("uid");
+
+//     // 🔹 2️⃣ Redirect URL uthao
 //     let url = survey.redirectUrl;
 
-//     // Agar http:// ya https:// missing ho to add kar do
+//     // 🔹 3️⃣ http / https missing ho to add karo
 //     if (!/^https?:\/\//i.test(url)) {
 //       url = "https://" + url;
 //     }
 
-//     window.open(url, "_self");
-//      setSubmitting(false);
+//     // 🔹 4️⃣ Redirect URL object
+//     const redirectUrl = new URL(url);
+//     const redirectParams = redirectUrl.searchParams;
+
+//     // 🔹 5️⃣ ONLY replace if param exists in redirect URL
+//     if (pid && redirectParams.has("pid")) {
+//       redirectParams.set("pid", pid);
+//     }
+
+//     if (uid && redirectParams.has("uid")) {
+//       redirectParams.set("uid", uid);
+//     }
+
+//     // 🔹 6️⃣ Redirect
+//     window.open(redirectUrl.toString(), "_self");
+
+//     setSubmitting(false);
 //   } catch (error) {
 //     console.error(error);
 //     setSubmitting(false);
 //   }
 // };
+
 
 const handleSubmit = async () => {
   setSubmitting(true);
@@ -76,10 +98,8 @@ const handleSubmit = async () => {
   try {
     await axios.post(`${API_URL}/api/submission/submit`, payload);
 
-    // 🔹 1️⃣ Survey URL se pid & uid uthao
-    const surveyParams = new URLSearchParams(window.location.search);
-    const pid = surveyParams.get("pid");
-    const uid = surveyParams.get("uid");
+    // 🔹 1️⃣ Current URL ke saare params uthao
+    const currentParams = new URLSearchParams(window.location.search);
 
     // 🔹 2️⃣ Redirect URL uthao
     let url = survey.redirectUrl;
@@ -89,22 +109,18 @@ const handleSubmit = async () => {
       url = "https://" + url;
     }
 
-    // 🔹 4️⃣ Redirect URL object
     const redirectUrl = new URL(url);
     const redirectParams = redirectUrl.searchParams;
 
-    // 🔹 5️⃣ ONLY replace if param exists in redirect URL
-    if (pid && redirectParams.has("pid")) {
-      redirectParams.set("pid", pid);
+    // 🔹 4️⃣ MATCHING KEYS ka value switch karo
+    for (const [key, value] of currentParams.entries()) {
+      if (redirectParams.has(key)) {
+        redirectParams.set(key, value);
+      }
     }
 
-    if (uid && redirectParams.has("uid")) {
-      redirectParams.set("uid", uid);
-    }
-
-    // 🔹 6️⃣ Redirect
+    // 🔹 5️⃣ Redirect
     window.open(redirectUrl.toString(), "_self");
-
     setSubmitting(false);
   } catch (error) {
     console.error(error);
